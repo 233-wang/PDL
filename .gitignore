@@ -1,0 +1,143 @@
+# 忽略所有 CSV 文件
+*.csv
+
+# 忽略模型检查点文件
+*.pth
+
+# 忽略压缩文件
+*.tar.gz
+
+# 忽略输出目录中的所有文件
+/output/
+output*/
+
+# 忽略数据集和临时文件
+/data/cifar-100-python/*
+/data/car_hacking/train_224/*
+
+# 忽略 Git 对象文件（不建议推送）
+/.git/objects/pack/
+
+# 忽略所有日志文件
+*.log
+
+# 忽略 Jupyter Notebook 的检查点
+.ipynb_checkpoints/
+
+# 忽略特定模型文件夹
+/scripts/save/models/resnet56_vanilla/*
+/scripts/save/models/resnet110_vanilla/*
+/scripts/save/models/wrn_40_2_vanilla/*
+/scripts/save/models/vgg13_vanilla/*
+/scripts/save/models/resnet32x4_vanilla/*
+/scripts/save/models/ResNet50_vanilla/*
+
+# 忽略IDE相关的配置
+.idea/
+
+# 忽略数据文件夹和临时文件夹
+data/
+ckpts/
+
+# 忽略图片、模型文件、压缩包
+*.t7
+*.png
+*.jpg
+*.pdf
+*.zip
+
+# 忽略临时 Python 文件
+tmp*.py
+
+# 忽略 Python 编译文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 忽略 C 扩展
+*.so
+
+# 忽略构建相关文件夹
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 忽略安装日志文件
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 忽略测试相关文件
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# 忽略数据库和 Flask 相关文件
+local_settings.py
+db.sqlite3
+instance/
+.webassets-cache
+
+# 忽略 Scrapy 相关文件
+.scrapy
+
+# 忽略 Sphinx 文档生成文件
+docs/_build/
+
+# 忽略 PyBuilder 相关文件
+target/
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints
+
+# 忽略 pyenv 和虚拟环境
+.python-version
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# 忽略 Celery beat 日程文件
+celerybeat-schedule
+
+# SageMath 解析文件
+*.sage.py
+
+# 忽略 Spyder 和 Rope 项目配置
+.spyderproject
+.spyproject
+.ropeproject
+
+# 忽略 Mkdocs 生成的站点文件
+/site
+
+# 忽略 mypy 缓存
+.mypy_cache/
+
+# 忽略特定的数据集文件
+dataset/Car-Hacking Dataset/Car_Hacking.csv
+dataset/ROAD/combined_data.csv
+dataset/CICIOV2024/decimal_benign.csv

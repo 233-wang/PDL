@@ -1,0 +1,25 @@
+==> loading teacher model
+Traceback (most recent call last):
+  File "train_student.py", line 402, in <module>
+    main()
+  File "train_student.py", line 207, in main
+    model_t = load_teacher(opt.path_t, n_cls)
+  File "train_student.py", line 139, in load_teacher
+    model.load_state_dict(torch.load(model_path)['model'])
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/serialization.py", line 1014, in load
+    return _load(opened_zipfile,
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/serialization.py", line 1422, in _load
+    result = unpickler.load()
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/serialization.py", line 1392, in persistent_load
+    typed_storage = load_tensor(dtype, nbytes, key, _maybe_decode_ascii(location))
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/serialization.py", line 1366, in load_tensor
+    wrap_storage=restore_location(storage, location),
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/serialization.py", line 381, in default_restore_location
+    result = fn(storage, location)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/serialization.py", line 279, in _cuda_deserialize
+    return obj.cuda(device)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/_utils.py", line 114, in _cuda
+    untyped_storage = torch.UntypedStorage(
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/storage.py", line 29, in __init__
+    def __init__(self, *args, **kwargs): ...  # noqa: E704
+KeyboardInterrupt

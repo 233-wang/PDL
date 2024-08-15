@@ -1,0 +1,30 @@
+==> loading teacher model
+==> done
+Teacher model size:
+Total parameters: 466646
+Model size: 1.78 MB
+Student model size:
+Total parameters: 174998
+Model size: 0.67 MB
+Traceback (most recent call last):
+  File "train_student.py", line 402, in <module>
+    main()
+  File "train_student.py", line 215, in main
+    flops_t, params_t = profile(model_t, inputs=(data, ), verbose=False)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/thop/profile.py", line 212, in profile
+    model(*inputs)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/iiot2/Desktop/PDL/KD/RepDistiller/models/resnet.py", line 184, in forward
+    x = self.conv1(x)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1568, in _call_impl
+    result = forward_call(*args, **kwargs)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/home/iiot2/anaconda3/envs/torchgpu/lib/python3.8/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+RuntimeError: Given groups=1, weight of size [16, 3, 3, 3], expected input[32, 1, 32, 32] to have 3 channels, but got 1 channels instead

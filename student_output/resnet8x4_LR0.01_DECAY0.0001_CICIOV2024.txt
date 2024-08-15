@@ -1,0 +1,9 @@
+==> loading teacher model
+Traceback (most recent call last):
+  File "train_student.py", line 402, in <module>
+    main()
+  File "train_student.py", line 207, in main
+    model_t = load_teacher(opt.path_t, n_cls)
+  File "train_student.py", line 138, in load_teacher
+    model = model_dict[model_t](num_classes=n_cls)
+KeyError: 'models'
