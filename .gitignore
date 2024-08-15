@@ -1,0 +1,276 @@
+# 忽略常见的大文件类型
+*.pth
+*.JPEG
+*.log
+*.csv
+*.pytar
+*.rar
+*.h5
+*.gz
+*.zip
+*.txt
+*.tar
+*.pack
+*.pt
+*.png
+*.docx
+*.7z
+
+# 其他常见的大文件类型
+*.mp4
+*.mkv
+*.avi
+*.mov
+*.flv
+*.wmv
+*.mp3
+*.wav
+*.flac
+*.iso
+*.exe
+*.dll
+*.obj
+*.bin
+*.dmg
+*.iso
+*.tar.gz
+*.tgz
+*.bz2
+*.xz
+*.apk
+*.deb
+*.rpm
+*.msi
+*.pkg
+*.img
+
+# 忽略所有的大型二进制文件
+*.bin
+
+# 忽略特定目录下的文件
+./MEAL-V2-master/MEAL_V2_resnet50_224/
+./master/2011-chevrolet-traverse/extra-attack-free/
+./ROAD/signal_extractions/ambient/
+./CICIDS2018/process/
+./ROAD/ambient/
+./master/2011-chevrolet-impala/extra-attack-free/
+./CICIDS2018/
+./master/2017-subaru-forester/combined-attacks/
+./master/2016-chevrolet-silverado/extra-attack-free/
+./master/2011-chevrolet-traverse/attack-free/
+./CICIDS2017/TrafficLabelling/
+./CICIDS2017/MachineLearningCVE/
+./ROAD/signal_extractions/attacks/
+./master/2017-subaru-forester/speed-attacks/
+./master/2017-subaru-forester/extra-attack-free/
+./master/2011-chevrolet-impala/attack-free/
+./DLB/dataset/cifar-10-batches-py/
+./master/2016-chevrolet-silverado/combined-attacks/
+./master/2016-chevrolet-silverado/attack-free/
+./master/2017-subaru-forester/systematic-attacks/
+./master/2017-subaru-forester/standstill-attacks/
+./master/2017-subaru-forester/rpm-attacks/
+./master/2017-subaru-forester/interval-attacks/
+./master/2017-subaru-forester/gear-attacks/
+./master/2017-subaru-forester/fuzzing-attacks/
+./master/2017-subaru-forester/DoS-attacks/
+./master/2017-subaru-forester/attack-free/
+./master/2016-chevrolet-silverado/systematic-attacks/
+./master/2016-chevrolet-silverado/interval-attacks/
+./master/2016-chevrolet-silverado/fuzzing-attacks/
+./master/2016-chevrolet-silverado/DoS-attacks/
+./master/2011-chevrolet-traverse/systematic-attacks/
+./master/2011-chevrolet-traverse/interval-attacks/
+./master/2011-chevrolet-traverse/fuzzing-attacks/
+./master/2011-chevrolet-traverse/DoS-attacks/
+./LiPar-main/OriginalDataset/
+./KD/RepDistiller/save/models/resnet32x4_CICIOV2024_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/resnet32x4_car_lr_0.05_decay_0.0005_trial_0/
+./CAR-Hacking/Intrusion-Detection-System-Using-CNN-and-Transfer-Learning-main/data/9) Car-Hacking Dataset/
+./CAR-Hacking/Intrusion-Detection-System-Using-CNN-and-Transfer-Learning-main/
+./StatGraph-main/StatGraph-ROAD/Dataset400_5/
+./master/2011-chevrolet-traverse/speed-attacks/
+./master/2011-chevrolet-impala/systematic-attacks/
+./CICIOV2024/binary/
+./MEAL-V2-master/imagenet/
+./master/2016-chevrolet-silverado/speed-attacks/
+./master/2016-chevrolet-silverado/cruise-control-attacks/
+./master/2011-chevrolet-impala/interval-attacks/
+./master/2011-chevrolet-impala/fuzzing-attacks/
+./master/2011-chevrolet-impala/DoS-attacks/
+./KD/RepDistiller/save/student_model/
+./KD/RepDistiller/save/models/wrn_40_2_ROAD_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/vgg8_ROAD_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/vgg8_CICIOV2024_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/vgg8_car_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/vgg16_ROAD_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/vgg13_ROAD_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/vgg11_ROAD_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/save/models/resnet32x4_ROAD_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/data/cifar-100-python/
+./StatGraph-main/StatGraph-ROAD/Dataset400_5/train/nodes/
+./StatGraph-main/.git/objects/88/
+./StatGraph-main/Dataset/Car Hacking Dataset/
+./ROAD/attacks/
+./MEAL-V2-master/imagenet
+./MEAL-V2-master/MEAL_V2_resnet50_224
+./master/.git/objects/pack/
+./master/2016-chevrolet-silverado/standstill-attacks/
+./master/2016-chevrolet-silverado/rpm-attacks/
+./master/2016-chevrolet-silverado/gear-attacks/
+./master/2011-chevrolet-traverse/rpm-attacks/
+./LiPar-main/DataProcessing/
+./KD/RepDistiller/scripts/save/models/wrn_40_2_vanilla/
+./KD/RepDistiller/scripts/save/models/vgg13_vanilla/
+./KD/RepDistiller/scripts/save/models/ResNet50_vanilla/
+./KD/RepDistiller/scripts/save/models/resnet32x4_vanilla/
+./KD/RepDistiller/scripts/save/models/resnet110_vanilla/
+./KD/RepDistiller/save/models/wrn_40_2_vanilla/
+./KD/RepDistiller/save/models/vgg13_vanilla/
+./KD/RepDistiller/save/models/ResNet50_vanilla/
+./KD/RepDistiller/save/models/resnet32x4_vanilla/
+./KD/RepDistiller/save/models/resnet110_vanilla/
+./KD/RepDistiller/save/models/resnet110_cifar100_lr_0.05_decay_0.0005_trial_0/
+./KD/RepDistiller/.git/objects/pack/
+./KD/RepDistiller/dataset/ROAD/
+./KD/RepDistiller/dataset/CICIOV2024/
+./KD/RepDistiller/dataset/Car-Hacking Dataset/
+./KD/RepDistiller/data/
+./InDistill(Pruned&distillation)/results/models/
+./DLB/dlb/cifar10/v_g_g_1_6TP3_0.5/vgg16/ckpt/
+./DLB/dataset/
+./CICIOV2024/hexadecimal/
+./CICIOV2024/decimal/
+./CICIOV2024/
+./CICIDS2017/
+./CAR-Hacking/Intrusion-Detection-System-Using-CNN-and-Transfer-Learning-main/data/9) Car-Hacking Dataset/normal_run_data/
+./CAR-Hacking/Intrusion-Detection-System-Using-CNN-and-Transfer-Learning-main/data/
+# 忽略所有子文件夹中的 .pth 文件
+**/*.pth
+./dataset/CICIOV2024/*
+# 忽略所有子文件夹中的 .JPEG 文件
+**/*.JPEG
+
+# 忽略所有子文件夹中的 .log 文件
+**/*.log
+
+# 忽略所有子文件夹中的 .csv 文件
+**/*.csv
+
+# 忽略所有子文件夹中的 .pytar 文件
+**/*.pytar
+
+# 忽略所有子文件夹中的 .rar 文件
+**/*.rar
+
+# 忽略所有子文件夹中的 .h5 文件
+**/*.h5
+
+# 忽略所有子文件夹中的 .gz 文件
+**/*.gz
+
+# 忽略所有子文件夹中的 .ipynb 文件
+# **/*.ipynb
+
+# 忽略所有子文件夹中的 .zip 文件
+**/*.zip
+
+# 忽略所有子文件夹中的 .txt 文件
+**/*.txt
+
+# 忽略所有子文件夹中的 .tar 文件
+**/*.tar
+
+# 忽略所有子文件夹中的 .pack 文件
+**/*.pack
+
+# 忽略所有子文件夹中的 .pt 文件
+**/*.pt
+
+# 忽略所有子文件夹中的 .png 文件
+**/*.png
+
+# 忽略所有子文件夹中的 .docx 文件
+**/*.docx
+
+# 忽略所有子文件夹中的 .7z 文件
+**/*.7z
+
+# 忽略所有子文件夹中的 .mp4 文件
+**/*.mp4
+
+# 忽略所有子文件夹中的 .mkv 文件
+**/*.mkv
+
+# 忽略所有子文件夹中的 .avi 文件
+**/*.avi
+
+# 忽略所有子文件夹中的 .mov 文件
+**/*.mov
+
+# 忽略所有子文件夹中的 .flv 文件
+**/*.flv
+
+# 忽略所有子文件夹中的 .wmv 文件
+**/*.wmv
+
+# 忽略所有子文件夹中的 .mp3 文件
+**/*.mp3
+
+# 忽略所有子文件夹中的 .wav 文件
+**/*.wav
+
+# 忽略所有子文件夹中的 .flac 文件
+**/*.flac
+
+# 忽略所有子文件夹中的 .iso 文件
+**/*.iso
+
+# 忽略所有子文件夹中的 .exe 文件
+**/*.exe
+
+# 忽略所有子文件夹中的 .dll 文件
+**/*.dll
+
+# 忽略所有子文件夹中的 .obj 文件
+**/*.obj
+
+# 忽略所有子文件夹中的 .bin 文件
+**/*.bin
+
+# 忽略所有子文件夹中的 .dmg 文件
+**/*.dmg
+
+# 忽略所有子文件夹中的 .tar.gz 文件
+**/*.tar.gz
+
+# 忽略所有子文件夹中的 .tgz 文件
+**/*.tgz
+
+# 忽略所有子文件夹中的 .bz2 文件
+**/*.bz2
+
+# 忽略所有子文件夹中的 .xz 文件
+**/*.xz
+
+# 忽略所有子文件夹中的 .apk 文件
+**/*.apk
+
+# 忽略所有子文件夹中的 .deb 文件
+**/*.deb
+
+# 忽略所有子文件夹中的 .rpm 文件
+**/*.rpm
+
+# 忽略所有子文件夹中的 .msi 文件
+**/*.msi
+
+# 忽略所有子文件夹中的 .pkg 文件
+**/*.pkg
+
+# 忽略所有子文件夹中的 .img 文件
+**/*.img
+./master/*
+./ROAD/signal_extractions
+./ROAD/signal_extractions/ambient
+./CICIDS2018/process
