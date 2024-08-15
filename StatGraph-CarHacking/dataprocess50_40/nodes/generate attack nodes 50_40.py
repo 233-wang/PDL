@@ -1,19 +1,16 @@
-''' node vectors generation'''
-'''one node vector = 1（ID）+ 8(data field)+  3（Number of edges, maximum degree, number of nodes）'''
+# 节点向量生成
+# 一个节点向量 = 1（ID）+ 8（数据字段）+ 3（边的数量、最大度、节点数）
+
 import csv
 import numpy as np
 import time
 import os
 import shutil
 
-
-def hex_to_int(lis):  # data cleaning function
+def hex_to_int(lis):  # 数据清洗函数
+    # 将十六进制数据转换为整数
     data = []
-    # lis1 = lis
-    # print('lis1',lis1)
-    # while('' in lis1):
-    #     lis = lis1.remove('')
-
+    # 根据数据字段的长度进行不同的处理
     if len(lis) == 8:
         for row in lis:
             row = int(row, 16)
@@ -33,64 +30,64 @@ def hex_to_int(lis):  # data cleaning function
         data.append(row)
     return data
 
-
-def write_csv(filepath, way, row): # writing fuction
+def write_csv(filepath, way, row):  # 写入CSV文件的函数
     if filepath is None:
         filepath = "preprocess_well_origin.csv"
     with open(filepath, way, encoding='utf-8', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(row)
 
-
 class Graph():
-    def __init__(self, num_of_nodes, N= 50, directed=True):
-        self.num_of_nodes = num_of_nodes  # Number of nodes
+    def __init__(self, num_of_nodes, N=50, directed=True):
+        # 初始化图
+        self.num_of_nodes = num_of_nodes  # 节点数量
         self.directed = directed
-        self.list_of_edges = []  # List of edges
+        self.list_of_edges = []  # 边列表
 
-        self.edge_matrix = np.zeros((N, N))  # Adjacent matrix
-        self.weight_matrix = np.zeros((N, N))  # Weight matrix
+        self.edge_matrix = np.zeros((N, N))  # 邻接矩阵
+        self.weight_matrix = np.zeros((N, N))  # 权重矩阵
 
         self.adjacency_list = {node: set() for node in range(num_of_nodes)}
 
     def add_node(self):
-
+        # 添加节点
         self.num_of_nodes += 1
 
     def add_edge(self, node1, node2, weight):
-        if self.edge_matrix[node1][node2]:  # If node1 and node2 are connected
+        # 添加边
+        if self.edge_matrix[node1][node2]:  # 如果节点1和节点2已连接
             self.weight_matrix[node1][node2] += weight
             self.adjacency_list[node1] = [node1, node2, self.adjacency_list[node1][2] + weight]
-        else:  # If node1 and node2 are not connected
+        else:  # 如果节点1和节点2未连接
             self.edge_matrix[node1][node2] = 1
             self.weight_matrix[node1][node2] = weight
             self.adjacency_list[node1] = [node1, node2, weight]
 
-    def record(self):  # Number of edges, maximum degree, number of nodes
+    def record(self):
+        # 记录图的属性：边的数量、最大度、节点数
         rec = []
         rec.append(np.sum(self.edge_matrix))
         rec.append(np.max((self.weight_matrix)))
         rec.append(self.num_of_nodes)
         return rec
 
+# 加载数据
 
-'''loading data'''
+# 标记异常数据的标签
+# DoS_Attack_dataset                    TAG = 1
+# Fuzzy_Attack_dataset                  TAG = 2
+# Spoofing_the_drive_gear_dataset       TAG = 3
+# Spoofing_the_RPM_gauge_dataset        TAG = 4
 
-''' TAG: the number of abnormal data
- DoS_Attack_dataset                    TAG = 1
- Fuzzy_Attack_dataset                  TAG = 2
- Spoofing_the_drive_gear_dataset       TAG = 3
- Spoofing_the_RPM_gauge_dataset        TAG = 4
- '''
 TAG = 1
-file_path_list = ['','DoS_Attack_dataset','Fuzzy_Attack_dataset','Spoofing_the_drive_gear_dataset','Spoofing_the_RPM_gauge_dataset']
-Slice = ['','train','val','test']
+file_path_list = ['', 'DoS_Attack_dataset', 'Fuzzy_Attack_dataset', 'Spoofing_the_drive_gear_dataset', 'Spoofing_the_RPM_gauge_dataset']
+Slice = ['', 'train', 'val', 'test']
 div = 1
-'''Slice:  divide data into the training set, the validation set and the test set
- train      div = 1
- val        div = 2
- test       div = 3
-'''
+# Slice: 将数据划分为训练集、验证集和测试集
+# train      div = 1
+# val        div = 2
+# test       div = 3
+
 batch_size = 40
 nodes = 50
 
