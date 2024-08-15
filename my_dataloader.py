@@ -7,11 +7,11 @@ import os
 import os.path
 import numpy as np
 import sys
-
+from torchvision import datasets, transforms
 import pickle
 import torch
 import torch.utils.data as data
-
+from torch.utils.data import Dataset
 from itertools import permutations
 
 
@@ -229,8 +229,82 @@ class TinyImageNet(ImageFolder):
         else:
             img = self.transform(img)
         return img, target
+# class d_CustomDataset(Dataset):
+#     def __init__(self, root_dir, transform=None, is_sample=False):
+#         """
+#         Args:
+#             root_dir (string): 数据集目录路径。
+#             transform (callable, optional): 应用于样本的可选变换。
+#             is_sample (bool): 是否进行样本采样（测试集一般不进行采样）。
+#         """
+#         self.root_dir = root_dir
+#         self.transform = transform
+#         self.is_sample = is_sample
 
+#         # 自动检测类别数
+#         self.classes = [d.name for d in os.scandir(root_dir) if d.is_dir()]
+#         self.class_to_idx = {cls_name: i for i, cls_name in enumerate(self.classes)}
 
+#         # 遍历数据集目录，收集所有图像的路径和相应的标签
+#         self.images = []
+#         self.labels = []
+#         for cls_name in self.classes:
+#             label_folder = os.path.join(self.root_dir, cls_name)
+#             for img_file in os.listdir(label_folder):
+#                 if img_file.endswith('.png') or img_file.endswith('.jpg'):
+#                     self.images.append(os.path.join(label_folder, img_file))
+#                     self.labels.append(self.class_to_idx[cls_name])
+
+#     def __len__(self):
+#         return len(self.images)
+
+#     def __getitem__(self, index):
+#         img_path = self.images[index]
+#         image = Image.open(img_path).convert('RGB')  
+#         label = self.labels[index]
+
+#         if self.transform:
+#             image = self.transform(image)
+
+#         return image, label,index
+class CustomDataset(Dataset):
+    def __init__(self, root_dir, transform=None, is_sample=False):
+        """
+        Args:
+            root_dir (string): 数据集目录路径。
+            transform (callable, optional): 应用于样本的可选变换。
+            is_sample (bool): 是否进行样本采样（测试集一般不进行采样）。
+        """
+        self.root_dir = root_dir
+        self.transform = transform
+        self.is_sample = is_sample
+
+        # 自动检测类别数
+        self.classes = [d.name for d in os.scandir(root_dir) if d.is_dir()]
+        self.class_to_idx = {cls_name: i for i, cls_name in enumerate(self.classes)}
+
+        # 遍历数据集目录，收集所有图像的路径和相应的标签
+        self.images = []
+        self.labels = []
+        for cls_name in self.classes:
+            label_folder = os.path.join(self.root_dir, cls_name)
+            for img_file in os.listdir(label_folder):
+                if img_file.endswith('.png') or img_file.endswith('.jpg'):
+                    self.images.append(os.path.join(label_folder, img_file))
+                    self.labels.append(self.class_to_idx[cls_name])
+
+    def __len__(self):
+        return len(self.images)
+
+    def __getitem__(self, index):
+        img_path = self.images[index]
+        image = Image.open(img_path).convert('RGB')  
+        label = self.labels[index]
+
+        if self.transform:
+            image = self.transform(image)
+
+        return image, label
 def get_dataloader(args, ddp=False):
     train_transforms = []
 
@@ -289,8 +363,9 @@ def get_dataloader(args, ddp=False):
         for i in range(args.aug_nums):
             train_transform = transforms.Compose(
                 [
-                    transforms.RandomResizedCrop(32),
-                    transforms.RandomHorizontalFlip(),
+                    # transforms.RandomResizedCrop(32),
+                    transforms.Resize(32),
+                    # transforms.RandomHorizontalFlip(),
                     transforms.ToTensor(),
                     normalize,
                 ]
@@ -327,7 +402,21 @@ def get_dataloader(args, ddp=False):
             root=os.path.join(args.root, "train"), transform_list=train_transforms
         )
         valset = CUB(root=os.path.join(args.root, "test"), transform=test_transform)
-
+    elif args.dataset == "CICIOV2024":
+        train_transform = transforms.Compose(
+                [
+                    transforms.Resize((32, 32)),
+                    transforms.ToTensor()
+                ]
+            )
+        train_transforms.append(train_transform)
+        test_transform = transforms.Compose(
+            [transforms.Resize((32, 32)), transforms.ToTensor()]
+        )        
+        train_data_folder = '../KD/RepDistiller/data/CICIOV2024/train'
+        test_data_folder = '../KD/RepDistiller/data/CICIOV2024/test'     
+        trainset  = CustomDataset(root_dir=train_data_folder, transform=train_transform, is_sample=False)
+        valset =   CustomDataset(root_dir=test_data_folder, transform=test_transform, is_sample=False)
     if not ddp:
         train_loader = DataLoader(
             trainset,

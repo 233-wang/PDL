@@ -24,8 +24,8 @@ parser.add_argument("--classes_num", type=int, default=100)
 parser.add_argument(
     "--dataset",
     type=str,
-    default="cifar100",
-    choices=["cifar100", "cifar10", "CUB", "tinyimagenet"],
+    default="cifar10",
+    choices=["cifar100", "cifar10", "CUB", "tinyimagenet","CICIOV2024"],
     help="dataset",
 )
 
@@ -59,6 +59,12 @@ exp_name = "_".join(args.model_names) + args.exp_postfix
 exp_path = "./dlb/{}/{}".format(args.dataset, exp_name)
 os.makedirs(exp_path, exist_ok=True)
 print(exp_path)
+import logging
+import os
+# 设置日志文件路径
+log_file_path = os.path.join(exp_path, "training_log.log")
+# 配置日志系统，设置日志级别和日志文件
+logging.basicConfig(filename=log_file_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def train_one_epoch(model, optimizer, train_loader, alpha, pre_data, pre_out):
@@ -72,6 +78,8 @@ def train_one_epoch(model, optimizer, train_loader, alpha, pre_data, pre_out):
         if torch.cuda.is_available():
             imgs = imgs.cuda()
             label = label.cuda()
+        # print('image',imgs.shape)  
+        # print('label',label.shape)    
         out = model.forward(imgs[:, 0, ...])
 
         if pre_data != None:
@@ -133,7 +141,7 @@ def evaluation(model, val_loader):
     acces = acc_recorder.avg
     return losses, acces
 
-
+# 在原基础上添加一些过程变量的输出。
 def train(model, optimizer, train_loader, scheduler):
     best_acc = -1
 
@@ -142,12 +150,13 @@ def train(model, optimizer, train_loader, scheduler):
     pre_data, pre_out = None, None
 
     for epoch in range(args.epoch):
+        print(f"Starting epoch {epoch+1}/{args.epoch}, Current Learning Rate: {scheduler.get_last_lr()[0]}")
         alpha = args.alpha
         train_losses, train_acces, pre_data, pre_out = train_one_epoch(
             model, optimizer, train_loader, alpha, pre_data, pre_out
         )
         val_losses, val_acces = evaluation(model, val_loader)
-
+        print(f"epoch:{epoch+1} model:{args.model_names} alpha:{alpha:.2f} train loss:{train_losses:.2f} acc:{train_acces:.2f}  val loss:{val_losses:.2f} acc:{val_acces:.2f}")
         if val_acces > best_acc:
             best_acc = val_acces
             state_dict = dict(epoch=epoch + 1, model=model.state_dict(), acc=val_acces)
